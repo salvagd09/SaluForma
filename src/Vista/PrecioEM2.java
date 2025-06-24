@@ -327,7 +327,7 @@ private javax.swing.JPanel panelPadre;
         cmd.execute();
         JOptionPane.showMessageDialog(null, "¡Cita agendada y pago procesado!");
       } catch (HeadlessException ex) {
-        JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        cmd.undo();
       }
       }
     private void CodigoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CodigoBActionPerformed

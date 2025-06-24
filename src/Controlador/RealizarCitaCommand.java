@@ -3,7 +3,7 @@ package Controlador;
 
 import Modelo.Cita;
 import Modelo.Pago;
-
+import javax.swing.JOptionPane;
 public class RealizarCitaCommand implements CommandRealizarCita {
     private Cita cita;
     private Pago pago;
@@ -28,5 +28,6 @@ public class RealizarCitaCommand implements CommandRealizarCita {
     @Override
     public void undo() {
          CitaFactory.establecerOperacion("eliminar", cita).actuar();
+         JOptionPane.showMessageDialog(null,"No se logro realizar la cita");
     }
 }
