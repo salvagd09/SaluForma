@@ -2,7 +2,9 @@
 package Vista;
 
 import Controlador.CRUDCita;
+import Controlador.CancelarPagoCommand;
 import Controlador.CitaFactory;
+import Controlador.CommandPago;
 import Controlador.CommandRealizarCita;
 import Controlador.RealizarCitaCommand;
 import Modelo.Cita;
@@ -401,7 +403,31 @@ NodoBP InsertarInicio(NodoBP inicio, String nom, String nboleta, String metp, St
     }//GEN-LAST:event_RegresarbtnActionPerformed
 
     private void CancelarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarPagoActionPerformed
-        //Aqui haz Itzair
+         String codigoBoleta = JOptionPane.showInputDialog(this, "Ingrese el código de la boleta a cancelar:");
+
+        if (codigoBoleta != null && !codigoBoleta.trim().isEmpty()) {
+            int confirmacion = JOptionPane.showConfirmDialog(this,
+                    "¿Está seguro que desea cancelar el pago con código: " + codigoBoleta + "?",
+                    "Confirmar cancelación", JOptionPane.YES_NO_OPTION);
+
+            if (confirmacion == JOptionPane.YES_OPTION) {
+                // Crear el objeto Pago con el código ingresado
+                Pago pago = new Pago();
+                pago.setCodigo_Boleta(codigoBoleta);
+
+                // Crear el comando y ejecutarlo
+                CommandPago cmdCancelar = new CancelarPagoCommand(pago, cita);
+                try {
+                    cmdCancelar.execute();
+                    JOptionPane.showMessageDialog(this, "Pago cancelado exitosamente.");
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, "Error al cancelar el pago: " + e.getMessage());
+                }
+            }  
+        } else { 
+            JOptionPane.showMessageDialog(this, "Debe ingresar un código de boleta válido.");
+        }  
+
     }//GEN-LAST:event_CancelarPagoActionPerformed
    private void cambiaraConf_c2() {
                 // Obtener el contenedor padre (JFrame o JPanel principal)
