@@ -43,6 +43,10 @@ private javax.swing.JPanel panelPadre;
     public PrecioEM2(Cita cita,javax.swing.JPanel panelPadre) {
         initComponents();
         this.cita=cita;
+<<<<<<< HEAD
+        this.pago=new Pago();
+=======
+>>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
         this.panelPadre=panelPadre;
         Preciotxt.setEditable(false);
         EstadoPago.setEditable(false);

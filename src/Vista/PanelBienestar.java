@@ -17,7 +17,10 @@ import Vista.ConsejoRutinaFisica;
 public class PanelBienestar extends javax.swing.JPanel {
     private final Color COLOR_POR_DEFECTO = new Color(0,0,0,0); // O usa null para transparente
     private final Color COLOR_SELECCIONADO = new Color(153, 217, 140);
+<<<<<<< HEAD
+=======
     private String panel_Activo;
+>>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
     private JButton botonSeleccionadoActual = null;
     public PanelBienestar() {
         initComponents();
@@ -165,22 +168,40 @@ public class PanelBienestar extends javax.swing.JPanel {
 
     private void Rutina_actividades_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Rutina_actividades_btnActionPerformed
         seleccionarBoton(Rutina_actividades_btn);
+<<<<<<< HEAD
+        Boton_Aceptar.setVisible(false);
+         contenedor.removeAll();
         Boton_Aceptar.setVisible(true);
         
         contenedor.removeAll();
+
+=======
+        Boton_Aceptar.setVisible(true);
+        
+        contenedor.removeAll();
+>>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
         contenedor.setLayout(new java.awt.BorderLayout());
         
         ConsejoRutinaFisica panelRutina = new ConsejoRutinaFisica(contenedor);  
         contenedor.add(panelRutina,java.awt.BorderLayout.CENTER);
         
         contenedor.revalidate();
+<<<<<<< HEAD
+        contenedor.repaint(); 
+=======
+>>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
         contenedor.repaint();       
     }//GEN-LAST:event_Rutina_actividades_btnActionPerformed
 
     private void Plan_de_alimentacionbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Plan_de_alimentacionbtnActionPerformed
         seleccionarBoton(Plan_de_alimentacionbtn);
+<<<<<<< HEAD
+        Boton_Aceptar.setVisible(false);
+        Boton_Aceptar.setVisible(true);
+=======
         Boton_Aceptar.setVisible(true);
         
+>>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
         contenedor.removeAll();
         contenedor.setLayout(new java.awt.BorderLayout());
         

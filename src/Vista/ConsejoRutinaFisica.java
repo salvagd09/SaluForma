@@ -45,7 +45,14 @@ public class ConsejoRutinaFisica extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtConsejo = new javax.swing.JTextArea();
         SiguienteButton = new javax.swing.JToggleButton();
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
         BtnRegresar = new javax.swing.JButton();
+>>>>>>> b9e10d1dd8a9661c1489041e22199b3c5aeadfbb
+=======
+        BtnRegresar = new javax.swing.JButton();
+>>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
         MostrarConsejo = new javax.swing.JToggleButton();
 
         setBackground(new java.awt.Color(0, 175, 185));
@@ -66,7 +73,15 @@ public class ConsejoRutinaFisica extends javax.swing.JPanel {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Eliga la rutina física:");
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+        comboRutina.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rutina de Rehabilitación", "Rutina de Equilibrio y Neuroplasticidad", "Rutina Antiinflamatoria Intestinal", "Rutina de Oxigenación y Regeneración Hepática", "Rutina de Salud Metabólica y Cardiovascular" }));
+=======
         comboRutina.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rutina de Rehabilitación", "Rutina de Equilibrio y Nueroplasticidad", "Rutina Antiinflamatoria Intestinal", "Rutina de Oxigenación y Regeneración Hepática", "Rutina de Salud Metabólica y Cardiovascular" }));
+>>>>>>> b9e10d1dd8a9661c1489041e22199b3c5aeadfbb
+=======
+        comboRutina.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rutina de Rehabilitación", "Rutina de Equilibrio y Nueroplasticidad", "Rutina Antiinflamatoria Intestinal", "Rutina de Oxigenación y Regeneración Hepática", "Rutina de Salud Metabólica y Cardiovascular" }));
+>>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
         comboRutina.setToolTipText("");
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
@@ -89,6 +104,11 @@ public class ConsejoRutinaFisica extends javax.swing.JPanel {
             }
         });
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
         BtnRegresar.setBackground(new java.awt.Color(168, 218, 220));
         BtnRegresar.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         BtnRegresar.setText("Regresar  ");
@@ -100,6 +120,10 @@ public class ConsejoRutinaFisica extends javax.swing.JPanel {
             }
         });
 
+<<<<<<< HEAD
+>>>>>>> b9e10d1dd8a9661c1489041e22199b3c5aeadfbb
+=======
+>>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
         MostrarConsejo.setBackground(new java.awt.Color(168, 218, 220));
         MostrarConsejo.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         MostrarConsejo.setText("Realizar Consejo");
@@ -139,12 +163,25 @@ public class ConsejoRutinaFisica extends javax.swing.JPanel {
                                 .addGap(6, 6, 6)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
+<<<<<<< HEAD
+<<<<<<< HEAD
+                                        .addGap(37, 37, 37)
+                                        .addComponent(MostrarConsejo)
+                                        .addGap(47, 47, 47)
+                                        .addComponent(SiguienteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+=======
+=======
+>>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
                                         .addGap(6, 6, 6)
                                         .addComponent(MostrarConsejo)
                                         .addGap(18, 18, 18)
                                         .addComponent(SiguienteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(26, 26, 26)
                                         .addComponent(BtnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+<<<<<<< HEAD
+>>>>>>> b9e10d1dd8a9661c1489041e22199b3c5aeadfbb
+=======
+>>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
@@ -167,7 +204,14 @@ public class ConsejoRutinaFisica extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
                     .addComponent(BtnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+>>>>>>> b9e10d1dd8a9661c1489041e22199b3c5aeadfbb
+=======
+                    .addComponent(BtnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+>>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
                     .addComponent(SiguienteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(MostrarConsejo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24))
@@ -214,7 +258,14 @@ public class ConsejoRutinaFisica extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
     private javax.swing.JButton BtnRegresar;
+>>>>>>> b9e10d1dd8a9661c1489041e22199b3c5aeadfbb
+=======
+    private javax.swing.JButton BtnRegresar;
+>>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
     private javax.swing.JToggleButton MostrarConsejo;
     private javax.swing.JToggleButton SiguienteButton;
     private javax.swing.JComboBox<String> comboArea1;
