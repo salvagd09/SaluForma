@@ -12,10 +12,11 @@ import javax.swing.JPanel;
  * @author LAB-USR-LNORTE
  */
 public class Ventana_Principal2 extends javax.swing.JFrame {
-    String rolUsuario="admin";
+   private final String rolUsuario;
     private Cita cita;
-    public Ventana_Principal2(Cita cita) {
+    public Ventana_Principal2(String rolUsuario,Cita cita) {
         initComponents();
+        this.rolUsuario = rolUsuario;
         setLocationRelativeTo(null);
         setTitle("Ventana principal");
         this.cita=cita;
@@ -118,7 +119,7 @@ public class Ventana_Principal2 extends javax.swing.JFrame {
 
     private void Boton_atajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_atajoActionPerformed
 
-        ModuloProxy proxy = new ModuloProxy(rolUsuario, "Pacientes");
+        ModuloProxy proxy = new ModuloProxy(this.rolUsuario, "Pacientes",cita);
         JPanel panelPermitido = proxy.obtenerPanel();
         if (panelPermitido instanceof PanelPacientes) {
         PanelPacientes panelPacientes = (PanelPacientes) panelPermitido;
@@ -132,7 +133,7 @@ public class Ventana_Principal2 extends javax.swing.JFrame {
     }//GEN-LAST:event_Boton_atajoActionPerformed
 
     private void Recordatorio_SaludActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Recordatorio_SaludActionPerformed
-        ModuloProxy proxy = new ModuloProxy(rolUsuario, "Recordatorios");
+        ModuloProxy proxy = new ModuloProxy(this.rolUsuario, "Recordatorios",cita);
         JPanel panelPermitido = proxy.obtenerPanel();
         if(panelPermitido instanceof PanelNotificaciones){
             PanelNotificaciones panNoti=(PanelNotificaciones) panelPermitido;
@@ -147,7 +148,7 @@ public class Ventana_Principal2 extends javax.swing.JFrame {
     }//GEN-LAST:event_Recordatorio_SaludActionPerformed
 
     private void BienestarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BienestarBtnActionPerformed
-        ModuloProxy proxy = new ModuloProxy(rolUsuario, "Consejos");
+        ModuloProxy proxy = new ModuloProxy(this.rolUsuario, "Consejos",cita);
         JPanel panelPermitido = proxy.obtenerPanel();
         contenedor.removeAll();
         contenedor.setLayout(new BorderLayout());
@@ -157,7 +158,7 @@ public class Ventana_Principal2 extends javax.swing.JFrame {
     }//GEN-LAST:event_BienestarBtnActionPerformed
 
     private void Modulo_PacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Modulo_PacientesActionPerformed
-        ModuloProxy proxy = new ModuloProxy(rolUsuario, "Pacientes");
+        ModuloProxy proxy = new ModuloProxy(this.rolUsuario, "Pacientes",cita);
         JPanel panelPermitido = proxy.obtenerPanel();
         contenedor.removeAll();
         contenedor.setLayout(new BorderLayout());
@@ -169,38 +170,6 @@ public class Ventana_Principal2 extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Ventana_Principal2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Ventana_Principal2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Ventana_Principal2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Ventana_Principal2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Ventana_Principal2(new Cita()).setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BienestarBtn;
     private javax.swing.JButton Boton_atajo;
