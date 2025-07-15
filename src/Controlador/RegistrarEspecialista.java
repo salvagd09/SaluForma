@@ -1,0 +1,25 @@
+
+package Controlador;
+
+import Modelo.DAO.EspecialistaDAO;
+import Modelo.Especialista_Derivacion;
+
+public class RegistrarEspecialista implements CRUDEspecialista{
+    private Especialista_Derivacion especialista;
+    public RegistrarEspecialista(Especialista_Derivacion especialista) {
+        this.especialista=especialista;
+    }
+    @Override
+    public void actuar() {
+       EspecialistaDAO dao=new EspecialistaDAO();
+       int resultado=dao.EjecutarCRUD("Insertar",especialista);
+       if(resultado==1){
+           System.out.println("La insercion del especialista ha sido exitosa.");
+           System.out.println("----------------");
+       }else{
+           System.out.println("La insercion del especialista no funciono.");
+            System.out.println("----------------");
+       }
+    }
+ 
+}
