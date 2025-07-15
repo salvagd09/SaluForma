@@ -247,6 +247,7 @@ public void AgregarPaciente2(ObservadorEventoPreventivo oep){
     observadores2.add(oep);
 }
 public  void EnviarNotificacion(){
+    String DNI=JOptionPane.showInputDialog("Ingrese su DNI:");
     String origen=rc1.getOrigen();
     String destinatario=rc1.getDestinatario();
     String mensaje=rc1.getMensaje();
@@ -254,8 +255,30 @@ public  void EnviarNotificacion(){
         o.actualizar(origen, destinatario, mensaje);
     }
     JOptionPane.showMessageDialog(this,"Notificacion de recordatorio enviada");
+    try{
+       int resultado;
+       Connection con = DBConnection.getInstancia1().getConexion();
+       CallableStatement stmt=null;
+       stmt=con.prepareCall("CALL  insertarNotificaciones(?,?,?,?,?,?)");
+       stmt.setString(1, DNI);
+       stmt.setString(2,origen);
+       stmt.setString(3,destinatario);
+       stmt.setDate(4, rc1.getFecha());
+       stmt.setString(5,mensaje);
+       stmt.setString(6, "Recordatorio de Cita");
+       resultado=stmt.executeUpdate();
+       if(resultado==0){
+           JOptionPane.showMessageDialog(null, "La notificacion no se pudo guardar.");
+       }
+       else{
+           JOptionPane.showMessageDialog(null,"La notificacion fue guardada tambien en la base de datos");
+       }
+    }catch(SQLException ex){
+        JOptionPane.showMessageDialog(null, "Error al manejar la base de datos");
+    }
 }
 public void EnviarNotificacion2(){
+   String DNI2=JOptionPane.showInputDialog("Ingrese su DNI:");
    String origen=nem1.getOrigen();
    String destinatario=nem1.getDestino();
    String motivo=nem1.getEventoMedico();
@@ -264,6 +287,27 @@ public void EnviarNotificacion2(){
        o.actualizar(origen, destinatario, motivo, mensaje);
    }
    JOptionPane.showMessageDialog(this,"Notificacion de evento medico");
+      try{
+       int resultado;
+       Connection con = DBConnection.getInstancia1().getConexion();
+       CallableStatement stmt=null;
+       stmt=con.prepareCall("CALL  insertarNotificaciones(?,?,?,?,?,?)");
+       stmt.setString(1, DNI2);
+       stmt.setString(2,origen);
+       stmt.setString(3,destinatario);
+       stmt.setDate(4, nem1.getFecha());
+       stmt.setString(5,mensaje);
+       stmt.setString(6, nem1.getMotivo());
+       resultado=stmt.executeUpdate();
+       if(resultado==0){
+           JOptionPane.showMessageDialog(null, "La notifiacion no se pudo guardar.");
+       }
+       else{
+           JOptionPane.showMessageDialog(null,"La notificacion fue guardada tambien en la base de datos");
+       }
+    }catch(SQLException ex){
+        JOptionPane.showMessageDialog(null, "Error al manejar la base de datos");
+    }
 }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Boton_Aceptar;
