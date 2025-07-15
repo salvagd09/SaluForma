@@ -1,7 +1,10 @@
 
 package Controlador;
 
+<<<<<<< HEAD
 import Modelo.Cita;
+=======
+>>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -9,10 +12,16 @@ public class ModuloProxy implements Modulos {
     private Modulos moduloReal;
     private final String tipoUsuario;
     private final String nombreModulo;
+<<<<<<< HEAD
     private final Cita cita;
     public ModuloProxy(String tipoUsuario, String nombreModulo,Cita cita) {
         this.tipoUsuario = tipoUsuario;
         this.cita=cita;
+=======
+
+    public ModuloProxy(String tipoUsuario, String nombreModulo) {
+        this.tipoUsuario = tipoUsuario;
+>>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
         this.nombreModulo = nombreModulo;
     }
     @Override
@@ -43,7 +52,11 @@ public class ModuloProxy implements Modulos {
     private Modulos crearModuloReal() {
         switch (nombreModulo) {
             case "Pacientes":
+<<<<<<< HEAD
                 return new ModuloPacientes(cita);
+=======
+                return new ModuloPacientes();
+>>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
             case "Consejos":
                 return new ModuloConsejos();
             case "Recordatorios":

@@ -1,5 +1,8 @@
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
 package Modelo;
 import Modelo.Interfaces.Comunicarse_con_el_paciente;
 public class Especialista_Derivacion implements Cloneable,Comunicarse_con_el_paciente {

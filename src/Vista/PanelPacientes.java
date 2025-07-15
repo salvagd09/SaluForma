@@ -7,6 +7,7 @@ package Vista;
 import Controlador.CRUDPaciente;
 import Controlador.PacienteFactory;
 import Modelo.Cita;
+<<<<<<< HEAD
 import Modelo.DAO.DBConnection;
 import Modelo.Paciente;
 import java.awt.BorderLayout;
@@ -17,6 +18,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+=======
+import Modelo.Paciente;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+>>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
 
 /**
  *
@@ -96,11 +105,19 @@ public class PanelPacientes extends javax.swing.JPanel {
         contenedor2.setLayout(contenedor2Layout);
         contenedor2Layout.setHorizontalGroup(
             contenedor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
             .addGap(0, 598, Short.MAX_VALUE)
         );
         contenedor2Layout.setVerticalGroup(
             contenedor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 498, Short.MAX_VALUE)
+=======
+            .addGap(0, 578, Short.MAX_VALUE)
+        );
+        contenedor2Layout.setVerticalGroup(
+            contenedor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 488, Short.MAX_VALUE)
+>>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
         );
 
         jButton2.setBackground(new java.awt.Color(218, 131, 136));
@@ -196,6 +213,7 @@ public class PanelPacientes extends javax.swing.JPanel {
     private void Observar_HistorialbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Observar_HistorialbtnActionPerformed
         seleccionarBoton(Observar_Historialbtn);
         Boton_Aceptar.setVisible(true);
+<<<<<<< HEAD
         Observar_Historial ob1=new Observar_Historial();
         panel_Activo="ObservarHistorial";
         contenedor2.removeAll(); // Limpia el contenedor
@@ -204,6 +222,13 @@ public class PanelPacientes extends javax.swing.JPanel {
         contenedor2.revalidate(); // Revalida el layout
         contenedor2.repaint();    // Redibuja el contenedor
         Boton_Aceptar.setText("Aceptar y observar");
+=======
+        contenedor2.removeAll(); // Limpia el contenedor
+        contenedor2.setLayout(new BorderLayout());
+        contenedor2.add(new JPanel(), BorderLayout.CENTER); // Agrega el nuevo panel
+        contenedor2.revalidate(); // Revalida el layout
+        contenedor2.repaint();    // Redibuja el contenedor
+>>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
     }//GEN-LAST:event_Observar_HistorialbtnActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -262,7 +287,10 @@ private void guardarPacienteenBD(Paciente paciente) {
         JOptionPane.showMessageDialog(this, "Error al registrar al paciente");
        }
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
 private void configurarBotones() {
     // Lista de todos los botones que cambiarán de color
     JButton[] botones = {
@@ -276,8 +304,14 @@ private void configurarBotones() {
         boton.setContentAreaFilled(false);
     }
 }
+<<<<<<< HEAD
 public void mostrarPanelCitas() {//Para el atajo
     seleccionarBoton(RealizarCita_btn); // Opcional si quieres que se marque
+=======
+public void mostrarPanelCitas() {
+    seleccionarBoton(RealizarCita_btn);
+    seleccionarBoton(RealizarCita_btn);  // Opcional si quieres que se marque
+>>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
     Boton_Aceptar.setVisible(true);
     Datos_Generales d1 = new Datos_Generales(cita, contenedor2);
     contenedor2.removeAll();
@@ -286,6 +320,7 @@ public void mostrarPanelCitas() {//Para el atajo
     contenedor2.revalidate();
     contenedor2.repaint();
 }
+<<<<<<< HEAD
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Boton_Aceptar;
@@ -298,6 +333,9 @@ public void mostrarPanelCitas() {//Para el atajo
     // End of variables declaration//GEN-END:variables
 
     private void ObservarHistorial() {
+=======
+private void ObservarHistorial() {
+>>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
       try{
            Observar_Historial panelObservarHistorial=(Observar_Historial) contenedor2.getComponent(0);
              String dni = panelObservarHistorial.getTxtDNI().getText().trim();
@@ -336,4 +374,17 @@ public void mostrarPanelCitas() {//Para el atajo
             JOptionPane.showMessageDialog(this, "Error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
   }
+<<<<<<< HEAD
+=======
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Boton_Aceptar;
+    private javax.swing.JButton Observar_Historialbtn;
+    private javax.swing.JButton RealizarCita_btn;
+    private javax.swing.JButton RegistrarseP_btn;
+    private javax.swing.JPanel contenedor2;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    // End of variables declaration//GEN-END:variables
+>>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
 }

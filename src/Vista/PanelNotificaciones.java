@@ -12,12 +12,15 @@ import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import Controlador.ObservadorRecordatorio;
+<<<<<<< HEAD
 import Modelo.DAO.DBConnection;
 import java.sql.CallableStatement;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.ResultSet;
+=======
+>>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
 
 /**
  *
@@ -198,7 +201,10 @@ public class PanelNotificaciones extends javax.swing.JPanel {
     private void Historial_observacionesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Historial_observacionesBtnActionPerformed
         seleccionarBoton(Historial_observacionesBtn);
         Boton_Aceptar.setVisible(true);
+<<<<<<< HEAD
         panel_Activo="Ver_notis";
+=======
+>>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
     }//GEN-LAST:event_Historial_observacionesBtnActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -210,6 +216,7 @@ public class PanelNotificaciones extends javax.swing.JPanel {
             "Alerta",JOptionPane.YES_NO_OPTION);
              if(valor==0){
             switch(panel_Activo){
+<<<<<<< HEAD
                 case "Enviar_Recordatorio":
                     EnviarNotificacion();
                     break;
@@ -218,6 +225,13 @@ public class PanelNotificaciones extends javax.swing.JPanel {
                     break;
                 case "Ver_notis":
                     ObservarNotificaciones();
+=======
+                case "EventoMedico":
+                    EnviarNotificacion2();
+                    break;
+                case "Enviar_Recordatorio":
+                    EnviarNotificacion();
+>>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
                     break;
             }
         }
@@ -328,8 +342,12 @@ public void EnviarNotificacion2(){
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+<<<<<<< HEAD
 
     private void ObservarNotificaciones() {
+=======
+        private void ObservarNotificaciones() {
+>>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
      try{
            Obsevar_NotificacionesHechas panelObservarNotis=(Obsevar_NotificacionesHechas) contenedor.getComponent(0);
             String dni = panelObservarNotis.getTxtDNI().getText().trim();
@@ -368,6 +386,9 @@ public void EnviarNotificacion2(){
             JOptionPane.showMessageDialog(this, "Error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
     }
+<<<<<<< HEAD
 
     
+=======
+>>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
 }

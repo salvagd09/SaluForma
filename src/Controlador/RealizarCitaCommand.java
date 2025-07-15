@@ -18,6 +18,11 @@ public class RealizarCitaCommand implements CommandRealizarCita {
             int resultadoCita = CitaFactory.establecerOperacion("insertar", cita).actuar();
             if (resultadoCita <= 0) throw new RuntimeException("Error al insertar cita");
             // PA
+<<<<<<< HEAD
+=======
+            int resultadoPago = PagoFactory.establecerOperacion("insertarpago", cita, pago).actuar();
+            if (resultadoPago <= 0) throw new RuntimeException("Error al insertar pago");
+>>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
         } catch (RuntimeException e) {
             undo(); // Rollback en caso de error
             throw e; // Relanza la excepción para notificar a la capa superior
