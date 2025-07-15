@@ -318,4 +318,43 @@ public void EnviarNotificacion2(){
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+        private void ObservarNotificaciones() {
+     try{
+           Obsevar_NotificacionesHechas panelObservarNotis=(Obsevar_NotificacionesHechas) contenedor.getComponent(0);
+            String dni = panelObservarNotis.getTxtDNI().getText().trim();
+             // Validar que el DNI no esté vacío
+            if (dni.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Por favor ingrese un DNI", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+             panelObservarNotis.prepararTabla();
+            try (Connection con = DBConnection.getInstancia1().getConexion()) {
+                    CallableStatement cs = con.prepareCall("{CALL MostrarHistorialEvaluaciones(?)}");
+                    cs.setString(1, dni);
+                    ResultSet rs = cs.executeQuery();
+                    boolean hayResultados=false;
+                    while (rs.next()) {
+                    Object[] registros = {
+                        rs.getString("ID_Historial"),
+                        rs.getString("ID_Medico"),
+                        rs.getString("Fecha_evaluacion"),
+                        rs.getString("Resultado"),
+                        rs.getString("Recomendaciones"),
+                        rs.getString("Tipo_evaluacion")
+                    };
+                        panelObservarNotis.agregarFila(registros);
+                        hayResultados = true;
+                    }   
+                    panelObservarNotis.datosCargados();
+            }
+            catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Error al cargar el historial: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                    ex.printStackTrace();
+            }
+      } catch (ClassCastException e) {
+            JOptionPane.showMessageDialog(this, "Error: Panel incorrecto para esta operación", "Error", JOptionPane.ERROR_MESSAGE);
+      } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    }
 }
