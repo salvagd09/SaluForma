@@ -2,6 +2,5 @@
 package Controlador;
 
 public interface ObservadorRecordatorio {
-   void actualizar(String origen,String destinatario, String mensaje);
-
+   void actualizar2(String origen,String destinatario, String mensaje);
 }

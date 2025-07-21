@@ -43,10 +43,7 @@ private javax.swing.JPanel panelPadre;
     public PrecioEM2(Cita cita,javax.swing.JPanel panelPadre) {
         initComponents();
         this.cita=cita;
-<<<<<<< HEAD
         this.pago=new Pago();
-=======
->>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
         this.panelPadre=panelPadre;
         Preciotxt.setEditable(false);
         EstadoPago.setEditable(false);
@@ -416,11 +413,9 @@ NodoBP InsertarInicio(NodoBP inicio, String nom, String nboleta, String metp, St
 
             if (confirmacion == JOptionPane.YES_OPTION) {
                 // Crear el objeto Pago con el código ingresado
-                Pago pago = new Pago();
                 pago.setCodigo_Boleta(codigoBoleta);
-
                 // Crear el comando y ejecutarlo
-                CommandPago cmdCancelar = new CancelarPagoCommand(pago, cita);
+                CommandPago cmdCancelar = new CancelarPagoCommand(cita,pago);
                 try {
                     cmdCancelar.execute();
                     JOptionPane.showMessageDialog(this, "Pago cancelado exitosamente.");

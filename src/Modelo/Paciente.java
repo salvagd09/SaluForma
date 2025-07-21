@@ -2,11 +2,14 @@
 package Modelo;
 
 import Controlador.ObservadorEventoPreventivo;
+import Controlador.ObservadorRecomendacion;
 import Modelo.Implementaciones.Evaluarsalud;
 import javax.swing.JOptionPane;
 import Controlador.ObservadorRecordatorio;
+import Controlador.ObservarPlanAlimentacion;
+import Controlador.ObservarRutinaFisica;
 /*Aqui se usa el Prototype mediante la interfaz Cloneable*/
-public class Paciente extends Evaluarsalud implements Cloneable,ObservadorRecordatorio,ObservadorEventoPreventivo {
+public class Paciente extends Evaluarsalud implements Cloneable,ObservadorRecordatorio,ObservadorEventoPreventivo,ObservadorRecomendacion,ObservarPlanAlimentacion,ObservarRutinaFisica {
     
     private String nombres;
     private String apellidos;
@@ -62,7 +65,7 @@ public class Paciente extends Evaluarsalud implements Cloneable,ObservadorRecord
     }
 
     @Override
-    public void actualizar(String origen, String destinatario, String mensaje) {
+    public void actualizar2(String origen, String destinatario, String mensaje) {
         JOptionPane.showMessageDialog(null,"Datos del recordatorio:\nOrigen del mensaje:"+origen+
                 "\nDestinatario del mensaje:"+destinatario+
                 "\nContenido del mensaje:"+mensaje,
@@ -76,6 +79,21 @@ public class Paciente extends Evaluarsalud implements Cloneable,ObservadorRecord
                 "\n Tipo de evento medico:"+Motivo+
                 "\nContenido del mensaje:"+mensaje,
                 "Notificacion de evento medico",JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    @Override
+    public void actualizar3(String origen, String pacientes, String mensaje) {
+       JOptionPane.showMessageDialog(null,"Hola, lo saludamos de:"+origen+" para recomendarle que "+mensaje+" ya que usted es un paciente usual en el area de "+mensaje);
+    }
+
+    @Override
+    public void actualizar5(String plan, String detalles) {
+       JOptionPane.showMessageDialog(null, "Detalles del plan de alimentacion\nTipo de Plan:"+plan+"\nDetalles del plan:"+detalles);
+    }
+
+    @Override
+    public void actualizar4(String area, String rutina, String Actfisica) {
+       JOptionPane.showMessageDialog(null, "Detalles del plan de actividad física\nRutina para los pacientes de:"+area+"\nNombre de la rutina:"+rutina+"\nActividades Fisicas a realizar:"+Actfisica);
     }
 
   }

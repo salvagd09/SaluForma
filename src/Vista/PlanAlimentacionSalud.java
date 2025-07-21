@@ -3,16 +3,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package Vista;
+import Controlador.ObservarPlanAlimentacion;
+import Modelo.Paciente;
+import java.util.ArrayList;
+import java.util.List;
 
-public class PlanAlimentaciónSalud extends javax.swing.JPanel {
+public class PlanAlimentacionSalud extends javax.swing.JPanel {
 
     private javax.swing.JPanel contenedorPrincipal;
-
-    public PlanAlimentaciónSalud(javax.swing.JPanel contenedorPrincipal) {
+    private List<ObservarPlanAlimentacion> observadores=new ArrayList<>();
+    public PlanAlimentacionSalud(javax.swing.JPanel contenedorPrincipal) {
         this.contenedorPrincipal = contenedorPrincipal;
+        Paciente pacienteObservador=new Paciente();
+        this.AgregarPaciente(pacienteObservador);
         initComponents();
     }
-
+    public String area() {
+        return comboPlanes.getSelectedItem().toString();
+    }
+    public String rutina() {
+        return txtPlan.getText();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,6 +57,11 @@ public class PlanAlimentaciónSalud extends javax.swing.JPanel {
 
         comboPlanes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Plan N1-RE", "Plan N2-EyQ", "Plan N3-AI", "Plan N4-ORH", "Plan N5-SMC" }));
         comboPlanes.setToolTipText("Eliga en base a las iniciales de su rutina fisica asignada");
+        comboPlanes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboPlanesActionPerformed(evt);
+            }
+        });
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
@@ -158,7 +174,7 @@ public class PlanAlimentaciónSalud extends javax.swing.JPanel {
 
         ConsejoRutinaFisica panelConsejo = new ConsejoRutinaFisica(contenedorPrincipal);
         contenedorPrincipal.add(panelConsejo, java.awt.BorderLayout.CENTER); 
-
+        
         contenedorPrincipal.revalidate();
         contenedorPrincipal.repaint(); 
     }//GEN-LAST:event_REGRESAR_BTNActionPerformed
@@ -228,10 +244,22 @@ public class PlanAlimentaciónSalud extends javax.swing.JPanel {
         }
 
         txtPlan.setText(plan);
-
+        GenerarPlan();
     }//GEN-LAST:event_REA_PLANActionPerformed
 
-
+    private void comboPlanesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboPlanesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboPlanesActionPerformed
+ public void AgregarPaciente(ObservarPlanAlimentacion o){
+    observadores.add(o);
+    }
+   private void GenerarPlan() {
+   String area=txtPlan.getText();
+   String plan=comboPlanes.getSelectedItem().toString();
+   for(ObservarPlanAlimentacion o:observadores){
+       o.actualizar5(area, plan);
+   }
+   }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton REA_PLAN;
     private javax.swing.JButton REGRESAR_BTN;

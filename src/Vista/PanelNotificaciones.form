@@ -121,7 +121,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="Historial_observacionesBtn">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&lt;html&gt;Mostrar historial de &lt;br&gt;evaluaciones&lt;/html&gt;"/>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;Mostrar historial de &lt;br&gt;notificaciones&lt;/html&gt;"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>

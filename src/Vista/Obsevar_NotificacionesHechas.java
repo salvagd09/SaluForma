@@ -22,7 +22,7 @@ public class Obsevar_NotificacionesHechas extends javax.swing.JPanel {
     DefaultTableModel modelo =  new DefaultTableModel();
     public Obsevar_NotificacionesHechas() {
         initComponents();
-        configurarTabla();
+        configurarTabla2();
     }
 
     /**
@@ -109,10 +109,10 @@ public class Obsevar_NotificacionesHechas extends javax.swing.JPanel {
     private void txtDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDNIActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDNIActionPerformed
-     private void configurarTabla() {
+     private void configurarTabla2() {
         modelo.setColumnIdentifiers(new String[]{
-            "ID Historial", "ID Medico", "Fecha", 
-            "Resultado", "Recomendacion", "Tipo"
+            "Notificacion_Num", "DNI_Personal", "Origen", 
+            "Destinatario", "Fecha", "Mensaje","Motivo"
         });
         Tabla_Notificaciones.setModel(modelo);
         

@@ -10,13 +10,13 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import java.sql.SQLException;
 
 /**
  *
  * @author SALVADOR
  */
+//Código del Login
 public class Login extends javax.swing.JFrame {
 
     /**

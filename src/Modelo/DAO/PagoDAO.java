@@ -21,18 +21,20 @@ public class PagoDAO {
             Connection con = DBConnection.getInstancia1().getConexion();
             CallableStatement stmt=null;
         if("insertarpago".equalsIgnoreCase(operacion)){
-               stmt=con.prepareCall("CALL InsertarPagoenCita(?;?,?,?,?,?,?)");
+               stmt=con.prepareCall("CALL InsertarPagoenCita(?,?,?,?,?,?,?)");
                stmt.setString(1,cita.getNombre_Completo());
                stmt.setString(2, cita.getNombre_Completo_Medico());
                stmt.setDate(3, cita.getFecha());
                stmt.setString(4, pago.getCodigo_Boleta());
                stmt.setString(5, pago.getMetodo_de_Pago());
                stmt.setDouble(6, pago.getMonto_de_Pago());
-               stmt.setString(5, pago.getEstado_de_Pago());
+               stmt.setString(7, pago.getEstado_de_Pago());
+               resultado=stmt.executeUpdate();
         }
         else if("cancelarpago".equalsIgnoreCase(operacion)){
             stmt=con.prepareCall("CALL CancelarPago(?)");
-             stmt.setString(1, pago.getCodigo_Boleta());
+            stmt.setString(1, pago.getCodigo_Boleta());
+            resultado=stmt.executeUpdate();
         }
         }catch (SQLException e) {
             System.err.println("Error al ejecutar el procedimiento almacenado " + e.getMessage());

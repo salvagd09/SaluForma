@@ -11,7 +11,7 @@ public class PacienteDAO {
             Connection con = DBConnection.getInstancia1().getConexion();
             CallableStatement stmt=null;
              if ("Insertar".equalsIgnoreCase(operacion)) {
-                stmt = con.prepareCall("CALL InsertarPacientes(?, ?, ?, ?, ?, ?, ?, ?)");
+                stmt = con.prepareCall("CALL InsertarPacientes(?, ?, ?, ?, ?, ?, ?, ?,?)");
                 stmt.setString(1, paciente.getNombres());
                 stmt.setString(2, paciente.getApellidos());
                 stmt.setString(3, paciente.getDni());
@@ -20,6 +20,7 @@ public class PacienteDAO {
                 stmt.setString(6, paciente.getGenero());
                 stmt.setDouble(7, paciente.getAltura());
                 stmt.setString(8, paciente.getHabitos());
+                stmt.setString(9,paciente.getTelefono());
                 resultado=stmt.executeUpdate();
             } 
             else if ("Actualizar".equalsIgnoreCase(operacion)) {

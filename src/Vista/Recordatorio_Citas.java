@@ -4,10 +4,8 @@
  */
 package Vista;
 
-<<<<<<< HEAD
+
 import java.sql.Date;
-=======
->>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
@@ -172,15 +170,12 @@ public class Recordatorio_Citas extends javax.swing.JPanel {
     public String getMensaje(){
         return Area_Mensaje.getText();
     }
-<<<<<<< HEAD
     public Date getFecha(){
         java.util.Date utilDate = Calendario.getDate();
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
         return sqlDate;
     }
-=======
 
->>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea Area_Mensaje;
     private com.toedter.calendar.JCalendar Calendario;

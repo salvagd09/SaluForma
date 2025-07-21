@@ -4,10 +4,13 @@
  */
 package Vista; 
 
+import Controlador.ObservadorRecomendacion;
+import Modelo.Paciente;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
-import Vista.ConsejoRutinaFisica; 
 
 
 /**
@@ -17,14 +20,15 @@ import Vista.ConsejoRutinaFisica;
 public class PanelBienestar extends javax.swing.JPanel {
     private final Color COLOR_POR_DEFECTO = new Color(0,0,0,0); // O usa null para transparente
     private final Color COLOR_SELECCIONADO = new Color(153, 217, 140);
-<<<<<<< HEAD
-=======
+    private Recomendaciones_Preventivas RP1;
     private String panel_Activo;
->>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
+    private List<ObservadorRecomendacion> observadores=new ArrayList<>();
     private JButton botonSeleccionadoActual = null;
     public PanelBienestar() {
         initComponents();
         configurarBotones();
+         Paciente pacienteObservador = new Paciente();
+         this.AgregarPaciente(pacienteObservador);
     }
 
     /**
@@ -163,49 +167,36 @@ public class PanelBienestar extends javax.swing.JPanel {
 
     private void GenerarRec_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerarRec_btnActionPerformed
         seleccionarBoton(GenerarRec_btn);
+        panel_Activo="GenerarRecomendacion";
         Boton_Aceptar.setVisible(true);
+        contenedor.removeAll();
+        contenedor.setLayout(new java.awt.BorderLayout());
+        RP1=new Recomendaciones_Preventivas(contenedor);
+        contenedor.add(RP1,java.awt.BorderLayout.CENTER);
+        contenedor.revalidate();
+        contenedor.repaint();
     }//GEN-LAST:event_GenerarRec_btnActionPerformed
 
     private void Rutina_actividades_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Rutina_actividades_btnActionPerformed
         seleccionarBoton(Rutina_actividades_btn);
-<<<<<<< HEAD
         Boton_Aceptar.setVisible(false);
          contenedor.removeAll();
-        Boton_Aceptar.setVisible(true);
-        
         contenedor.removeAll();
-
-=======
-        Boton_Aceptar.setVisible(true);
-        
-        contenedor.removeAll();
->>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
         contenedor.setLayout(new java.awt.BorderLayout());
         
         ConsejoRutinaFisica panelRutina = new ConsejoRutinaFisica(contenedor);  
         contenedor.add(panelRutina,java.awt.BorderLayout.CENTER);
-        
         contenedor.revalidate();
-<<<<<<< HEAD
-        contenedor.repaint(); 
-=======
->>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
         contenedor.repaint();       
     }//GEN-LAST:event_Rutina_actividades_btnActionPerformed
 
     private void Plan_de_alimentacionbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Plan_de_alimentacionbtnActionPerformed
         seleccionarBoton(Plan_de_alimentacionbtn);
-<<<<<<< HEAD
         Boton_Aceptar.setVisible(false);
-        Boton_Aceptar.setVisible(true);
-=======
-        Boton_Aceptar.setVisible(true);
-        
->>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
         contenedor.removeAll();
         contenedor.setLayout(new java.awt.BorderLayout());
         
-        PlanAlimentaciónSalud panelAlimentación = new PlanAlimentaciónSalud(contenedor); 
+        PlanAlimentacionSalud panelAlimentación = new PlanAlimentacionSalud(contenedor); 
         contenedor.add(panelAlimentación,java.awt.BorderLayout.CENTER);
         
         contenedor.revalidate();
@@ -222,6 +213,9 @@ public class PanelBienestar extends javax.swing.JPanel {
     private void Boton_AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_AceptarActionPerformed
         int valor=JOptionPane.showConfirmDialog(null,"¿Deseas realizar esta operacion?",
             "Alerta",JOptionPane.YES_NO_OPTION);
+        if(valor==0){
+              GenerarRecomendacion();
+            }
     }//GEN-LAST:event_Boton_AceptarActionPerformed
 private void seleccionarBoton(JButton boton) { 
     if (boton == null) return; // Seguridad
@@ -262,4 +256,15 @@ private void configurarBotones() {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+public void AgregarPaciente(ObservadorRecomendacion o){
+    observadores.add(o);
+}
+private void GenerarRecomendacion() {
+   String origen=RP1.origen();
+   String destinatario=RP1.destino();
+   String mensaje=RP1.mensaje();
+   for(ObservadorRecomendacion o:observadores){
+       o.actualizar3(origen, destinatario, mensaje);
+   }
+}
 }

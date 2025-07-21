@@ -12,16 +12,12 @@ import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import Controlador.ObservadorRecordatorio;
-<<<<<<< HEAD
 import Modelo.DAO.DBConnection;
+import Modelo.Paciente;
 import java.sql.CallableStatement;
-import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.ResultSet;
-=======
->>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
-
 /**
  *
  * @author LAB-USR-LNORTE
@@ -32,12 +28,16 @@ public class PanelNotificaciones extends javax.swing.JPanel {
     private String panel_Activo;
     private Recordatorio_Citas rc1; 
     private NotificacionEventosMedicos nem1;
+    private Obsevar_NotificacionesHechas oh1;
     private List<ObservadorRecordatorio> observadores=new ArrayList<>();
     private List<ObservadorEventoPreventivo> observadores2=new ArrayList<>();
     private JButton botonSeleccionadoActual = null;
     public PanelNotificaciones() {
         initComponents();
         configurarBotones();
+        Paciente pacienteObservador = new Paciente();
+        this.AgregarPaciente(pacienteObservador);  // Para recordatorios
+        this.AgregarPaciente2(pacienteObservador); // Para eventos médicos
     }
 
     /**
@@ -84,7 +84,7 @@ public class PanelNotificaciones extends javax.swing.JPanel {
             }
         });
 
-        Historial_observacionesBtn.setText("<html>Mostrar historial de <br>evaluaciones</html>");
+        Historial_observacionesBtn.setText("<html>Mostrar historial de <br>notificaciones</html>");
         Historial_observacionesBtn.setBorder(null);
         Historial_observacionesBtn.setContentAreaFilled(false);
         Historial_observacionesBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -201,10 +201,13 @@ public class PanelNotificaciones extends javax.swing.JPanel {
     private void Historial_observacionesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Historial_observacionesBtnActionPerformed
         seleccionarBoton(Historial_observacionesBtn);
         Boton_Aceptar.setVisible(true);
-<<<<<<< HEAD
         panel_Activo="Ver_notis";
-=======
->>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
+        oh1 = new Obsevar_NotificacionesHechas();
+        contenedor.removeAll();
+        contenedor.setLayout(new BorderLayout());
+        contenedor.add(oh1,BorderLayout.CENTER);
+        contenedor.revalidate();
+        contenedor.repaint();
     }//GEN-LAST:event_Historial_observacionesBtnActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -216,7 +219,6 @@ public class PanelNotificaciones extends javax.swing.JPanel {
             "Alerta",JOptionPane.YES_NO_OPTION);
              if(valor==0){
             switch(panel_Activo){
-<<<<<<< HEAD
                 case "Enviar_Recordatorio":
                     EnviarNotificacion();
                     break;
@@ -225,13 +227,6 @@ public class PanelNotificaciones extends javax.swing.JPanel {
                     break;
                 case "Ver_notis":
                     ObservarNotificaciones();
-=======
-                case "EventoMedico":
-                    EnviarNotificacion2();
-                    break;
-                case "Enviar_Recordatorio":
-                    EnviarNotificacion();
->>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
                     break;
             }
         }
@@ -276,7 +271,7 @@ public  void EnviarNotificacion(){
     String destinatario=rc1.getDestinatario();
     String mensaje=rc1.getMensaje();
     for(ObservadorRecordatorio o:observadores){
-        o.actualizar(origen, destinatario, mensaje);
+        o.actualizar2(origen, destinatario, mensaje);
     }
     JOptionPane.showMessageDialog(this,"Notificacion de recordatorio enviada");
     try{
@@ -342,12 +337,9 @@ public void EnviarNotificacion2(){
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
-<<<<<<< HEAD
+
 
     private void ObservarNotificaciones() {
-=======
-        private void ObservarNotificaciones() {
->>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
      try{
            Obsevar_NotificacionesHechas panelObservarNotis=(Obsevar_NotificacionesHechas) contenedor.getComponent(0);
             String dni = panelObservarNotis.getTxtDNI().getText().trim();
@@ -358,18 +350,19 @@ public void EnviarNotificacion2(){
             }
              panelObservarNotis.prepararTabla();
             try (Connection con = DBConnection.getInstancia1().getConexion()) {
-                    CallableStatement cs = con.prepareCall("{CALL MostrarHistorialEvaluaciones(?)}");
+                    CallableStatement cs = con.prepareCall("{CALL MostrarNotificaciones(?)}");
                     cs.setString(1, dni);
                     ResultSet rs = cs.executeQuery();
                     boolean hayResultados=false;
                     while (rs.next()) {
                     Object[] registros = {
-                        rs.getString("ID_Historial"),
-                        rs.getString("ID_Medico"),
-                        rs.getString("Fecha_evaluacion"),
-                        rs.getString("Resultado"),
-                        rs.getString("Recomendaciones"),
-                        rs.getString("Tipo_evaluacion")
+                        rs.getString("id"),
+                        rs.getString("DNI_personal"),
+                        rs.getString("Nombre_Entidad"),
+                        rs.getString("Destinatario"),
+                        rs.getString("Fecha"),
+                        rs.getString("Mensaje"),
+                        rs.getString("Motivo_Mensaje")
                     };
                         panelObservarNotis.agregarFila(registros);
                         hayResultados = true;
@@ -377,7 +370,7 @@ public void EnviarNotificacion2(){
                     panelObservarNotis.datosCargados();
             }
             catch (SQLException ex) {
-                JOptionPane.showMessageDialog(this, "Error al cargar el historial: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Error al cargar las observaciones " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                     ex.printStackTrace();
             }
       } catch (ClassCastException e) {
@@ -386,9 +379,4 @@ public void EnviarNotificacion2(){
             JOptionPane.showMessageDialog(this, "Error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
     }
-<<<<<<< HEAD
-
-    
-=======
->>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
 }

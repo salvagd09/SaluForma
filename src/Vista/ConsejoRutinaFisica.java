@@ -4,6 +4,11 @@
  */
 package Vista; 
 
+import Controlador.ObservarRutinaFisica;
+import Modelo.Paciente;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Itzair
@@ -11,10 +16,12 @@ package Vista;
 public class ConsejoRutinaFisica extends javax.swing.JPanel {
     
     private javax.swing.JPanel contenedorPrincipal;
-
+     private List<ObservarRutinaFisica> observadores=new ArrayList<>();
     public ConsejoRutinaFisica(javax.swing.JPanel contenedorPrincipal) {
         this.contenedorPrincipal = contenedorPrincipal;
         initComponents();
+         Paciente pacienteObservador = new Paciente();
+         this.AgregarPaciente(pacienteObservador);
 
         comboArea1.addActionListener(new java.awt.event.ActionListener() {
             @Override
@@ -45,16 +52,8 @@ public class ConsejoRutinaFisica extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtConsejo = new javax.swing.JTextArea();
         SiguienteButton = new javax.swing.JToggleButton();
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
         BtnRegresar = new javax.swing.JButton();
->>>>>>> b9e10d1dd8a9661c1489041e22199b3c5aeadfbb
-=======
-        BtnRegresar = new javax.swing.JButton();
->>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
         MostrarConsejo = new javax.swing.JToggleButton();
-
         setBackground(new java.awt.Color(0, 175, 185));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
@@ -73,15 +72,7 @@ public class ConsejoRutinaFisica extends javax.swing.JPanel {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Eliga la rutina física:");
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-        comboRutina.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rutina de Rehabilitación", "Rutina de Equilibrio y Neuroplasticidad", "Rutina Antiinflamatoria Intestinal", "Rutina de Oxigenación y Regeneración Hepática", "Rutina de Salud Metabólica y Cardiovascular" }));
-=======
         comboRutina.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rutina de Rehabilitación", "Rutina de Equilibrio y Nueroplasticidad", "Rutina Antiinflamatoria Intestinal", "Rutina de Oxigenación y Regeneración Hepática", "Rutina de Salud Metabólica y Cardiovascular" }));
->>>>>>> b9e10d1dd8a9661c1489041e22199b3c5aeadfbb
-=======
-        comboRutina.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rutina de Rehabilitación", "Rutina de Equilibrio y Nueroplasticidad", "Rutina Antiinflamatoria Intestinal", "Rutina de Oxigenación y Regeneración Hepática", "Rutina de Salud Metabólica y Cardiovascular" }));
->>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
         comboRutina.setToolTipText("");
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
@@ -103,12 +94,6 @@ public class ConsejoRutinaFisica extends javax.swing.JPanel {
                 SiguienteButtonActionPerformed(evt);
             }
         });
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
         BtnRegresar.setBackground(new java.awt.Color(168, 218, 220));
         BtnRegresar.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         BtnRegresar.setText("Regresar  ");
@@ -119,11 +104,6 @@ public class ConsejoRutinaFisica extends javax.swing.JPanel {
                 BtnRegresarActionPerformed(evt);
             }
         });
-
-<<<<<<< HEAD
->>>>>>> b9e10d1dd8a9661c1489041e22199b3c5aeadfbb
-=======
->>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
         MostrarConsejo.setBackground(new java.awt.Color(168, 218, 220));
         MostrarConsejo.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         MostrarConsejo.setText("Realizar Consejo");
@@ -136,55 +116,39 @@ public class ConsejoRutinaFisica extends javax.swing.JPanel {
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addContainerGap(14, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(comboRutina, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(comboArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(26, 26, 26))
+   layout.setHorizontalGroup(
+    layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+    .addGroup(layout.createSequentialGroup()
+        .addGap(18, 18, 18)
+        .addComponent(jLabel1)
+        .addContainerGap(14, Short.MAX_VALUE))
+    .addGroup(layout.createSequentialGroup()
+        .addGap(31, 31, 31)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-<<<<<<< HEAD
-<<<<<<< HEAD
-                                        .addGap(37, 37, 37)
-                                        .addComponent(MostrarConsejo)
-                                        .addGap(47, 47, 47)
-                                        .addComponent(SiguienteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-=======
-=======
->>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
-                                        .addGap(6, 6, 6)
-                                        .addComponent(MostrarConsejo)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(SiguienteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(26, 26, 26)
-                                        .addComponent(BtnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-<<<<<<< HEAD
->>>>>>> b9e10d1dd8a9661c1489041e22199b3c5aeadfbb
-=======
->>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(comboRutina, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(comboArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(26, 26, 26))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(MostrarConsejo)
+                        .addGap(47, 47, 47)
+                        .addComponent(SiguienteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(BtnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+));
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -204,14 +168,7 @@ public class ConsejoRutinaFisica extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
                     .addComponent(BtnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
->>>>>>> b9e10d1dd8a9661c1489041e22199b3c5aeadfbb
-=======
-                    .addComponent(BtnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
->>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
                     .addComponent(SiguienteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(MostrarConsejo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24))
@@ -223,7 +180,7 @@ public class ConsejoRutinaFisica extends javax.swing.JPanel {
     contenedorPrincipal.removeAll();
     contenedorPrincipal.setLayout(new java.awt.BorderLayout());
 
-    PlanAlimentaciónSalud panelAlimentacion = new PlanAlimentaciónSalud(contenedorPrincipal);
+    PlanAlimentacionSalud panelAlimentacion = new PlanAlimentacionSalud(contenedorPrincipal);
     contenedorPrincipal.add(panelAlimentacion, java.awt.BorderLayout.CENTER);
 
     contenedorPrincipal.revalidate();
@@ -252,20 +209,23 @@ public class ConsejoRutinaFisica extends javax.swing.JPanel {
                 "Para pacientes de " + area + ": realice caminatas de 30 min, bicicleta estática o ejercicios aeróbicos de bajo impacto.";
             default -> "Seleccione una rutina válida."; 
         };
-
-       txtConsejo.setText(consejo);  
+       txtConsejo.setText(consejo);
+       GenerarConsejo();
     }//GEN-LAST:event_MostrarConsejoActionPerformed
-
+    public void AgregarPaciente(ObservarRutinaFisica o){
+    observadores.add(o);
+    }
+   private void GenerarConsejo() {
+   String area=comboArea1.getSelectedItem().toString();
+   String rutina=comboRutina.getSelectedItem().toString();
+   String actFisica=txtConsejo.getText();
+   for(ObservarRutinaFisica o:observadores){
+       o.actualizar4(area, rutina,actFisica);
+   }
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
     private javax.swing.JButton BtnRegresar;
->>>>>>> b9e10d1dd8a9661c1489041e22199b3c5aeadfbb
-=======
-    private javax.swing.JButton BtnRegresar;
->>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
     private javax.swing.JToggleButton MostrarConsejo;
     private javax.swing.JToggleButton SiguienteButton;
     private javax.swing.JComboBox<String> comboArea1;

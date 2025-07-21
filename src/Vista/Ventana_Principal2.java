@@ -5,10 +5,6 @@ import Controlador.ModuloProxy;
 import Modelo.Cita;
 import Modelo.Paciente;
 import java.awt.BorderLayout;
-<<<<<<< HEAD
-import javax.swing.JOptionPane;
-=======
->>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
 import javax.swing.JPanel;
 
 /**
@@ -16,23 +12,18 @@ import javax.swing.JPanel;
  * @author LAB-USR-LNORTE
  */
 public class Ventana_Principal2 extends javax.swing.JFrame {
-<<<<<<< HEAD
     private final String rolUsuario;
-=======
-   private final String rolUsuario;
->>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
     private Cita cita;
     public Ventana_Principal2(String rolUsuario,Cita cita) {
         initComponents();
         this.rolUsuario = rolUsuario;
+        this.cita=cita;
         setLocationRelativeTo(null);
         setTitle("Ventana principal");
         this.cita=cita;
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -129,80 +120,37 @@ public class Ventana_Principal2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Boton_atajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_atajoActionPerformed
-<<<<<<< HEAD
-        
-=======
 
->>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
-        ModuloProxy proxy = new ModuloProxy(this.rolUsuario, "Pacientes",cita);
-        JPanel panelPermitido = proxy.obtenerPanel();
-        if (panelPermitido instanceof PanelPacientes) {
-        PanelPacientes panelPacientes = (PanelPacientes) panelPermitido;
-        panelPacientes.mostrarPanelCitas();
-        }
-        contenedor.removeAll();
-        contenedor.setLayout(new BorderLayout());
-        contenedor.add(panelPermitido, BorderLayout.CENTER);
-        contenedor.revalidate();
-        contenedor.repaint();
+         ModuloProxy proxy = new ModuloProxy(this.rolUsuario, "Pacientes", cita);
+        mostrarPanel(proxy.obtenerPanel());
     }//GEN-LAST:event_Boton_atajoActionPerformed
 
     private void Recordatorio_SaludActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Recordatorio_SaludActionPerformed
-<<<<<<< HEAD
-        ModuloProxy proxy = new ModuloProxy(rolUsuario, "Recordatorios",cita);
-=======
-        ModuloProxy proxy = new ModuloProxy(this.rolUsuario, "Recordatorios",cita);
->>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
-        JPanel panelPermitido = proxy.obtenerPanel();
-        if(panelPermitido instanceof PanelNotificaciones){
-            PanelNotificaciones panNoti=(PanelNotificaciones) panelPermitido;
-            panNoti.AgregarPaciente(new Paciente());
-            panNoti.AgregarPaciente2(new Paciente());
-        }
-        contenedor.removeAll();
-        contenedor.setLayout(new BorderLayout());
-        contenedor.add(panelPermitido, BorderLayout.CENTER);
-        contenedor.revalidate();
-        contenedor.repaint();
+
+        ModuloProxy proxy = new ModuloProxy(this.rolUsuario, "Recordatorios", cita);
+        mostrarPanel(proxy.obtenerPanel());
     }//GEN-LAST:event_Recordatorio_SaludActionPerformed
 
     private void BienestarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BienestarBtnActionPerformed
-<<<<<<< HEAD
-        ModuloProxy proxy = new ModuloProxy(rolUsuario, "Consejos",cita);
-=======
-        ModuloProxy proxy = new ModuloProxy(this.rolUsuario, "Consejos",cita);
->>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
-        JPanel panelPermitido = proxy.obtenerPanel();
-        contenedor.removeAll();
-        contenedor.setLayout(new BorderLayout());
-        contenedor.add(panelPermitido, BorderLayout.CENTER);
-        contenedor.revalidate();
-        contenedor.repaint();
+
+        ModuloProxy proxy = new ModuloProxy(this.rolUsuario, "Consejos", cita);
+        mostrarPanel(proxy.obtenerPanel());
     }//GEN-LAST:event_BienestarBtnActionPerformed
 
     private void Modulo_PacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Modulo_PacientesActionPerformed
-<<<<<<< HEAD
-        cita=new Cita();
-        ModuloProxy proxy = new ModuloProxy(rolUsuario, "Pacientes",cita);
-=======
-        ModuloProxy proxy = new ModuloProxy(this.rolUsuario, "Pacientes",cita);
->>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
-        JPanel panelPermitido = proxy.obtenerPanel();
+        ModuloProxy proxy = new ModuloProxy(this.rolUsuario, "Pacientes", cita);
+        mostrarPanel(proxy.obtenerPanel());
+    }//GEN-LAST:event_Modulo_PacientesActionPerformed
+    private void mostrarPanel(JPanel panel) {
         contenedor.removeAll();
         contenedor.setLayout(new BorderLayout());
-        contenedor.add(panelPermitido, BorderLayout.CENTER);
+        contenedor.add(panel, BorderLayout.CENTER);
         contenedor.revalidate();
         contenedor.repaint();
-    }//GEN-LAST:event_Modulo_PacientesActionPerformed
-
+    }
     /**
      * @param args the command line arguments
      */
-<<<<<<< HEAD
-    
-
-=======
->>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BienestarBtn;
     private javax.swing.JButton Boton_atajo;

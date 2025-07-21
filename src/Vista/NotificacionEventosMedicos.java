@@ -5,12 +5,8 @@
 package Vista;
 
 import java.text.SimpleDateFormat;
-<<<<<<< HEAD
-import java.sql.Date;
-=======
-import java.util.Date;
->>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
 import java.util.Locale;
+import java.sql.Date;
 
 /**
  *
@@ -38,7 +34,6 @@ public class NotificacionEventosMedicos extends javax.swing.JPanel {
     public String getMensaje(){
         return MensajeArea.getText();
     }
-<<<<<<< HEAD
     public Date getFecha(){
         java.util.Date utilDate = Calendario.getDate();
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
@@ -47,8 +42,6 @@ public class NotificacionEventosMedicos extends javax.swing.JPanel {
     public String getMotivo(){
         return EventoNotificar.getSelectedItem().toString();
     }
-=======
->>>>>>> 05ea94865f80c69ed3cfbd4ff3039d7611ce2208
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
